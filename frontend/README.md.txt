@@ -1,0 +1,1 @@
+Espaço destinado para a interface do sistema

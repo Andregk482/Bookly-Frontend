@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookLy - Preço e Foto</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="catalogo.html" class="navbar-logo">
+            <span class="logo-book">Book</span><span class="logo-ly">Ly</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="cadastro-step1.html">Cadastrar Livro</a></li>
+            <li><a href="planos.html">Planos</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="sidebar" id="sidebar">
+        <a href="catalogo.html">Catálogo</a>
+        <a href="cadastro-step1.html">Cadastrar Livro</a>
+        <a href="cadastro-step2.html">Estado do Exemplar</a>
+        <a href="cadastro-step3.html" class="active">Preço/Foto</a>
+        <a href="planos.html">Planos</a>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="card">
+        <div class="progress-bar">
+            <div class="step done">
+                <div class="circle">✓</div>
+                <span>Informações Iniciais</span>
+            </div>
+            <div class="line"></div>
+            <div class="step done">
+                <div class="circle">✓</div>
+                <span>Características Físicas</span>
+            </div>
+            <div class="line"></div>
+            <div class="step active">
+                <div class="circle">3</div>
+                <span>Preço/Foto</span>
+            </div>
+        </div>
+
+        <h1 class="page-title">Recomendação de preço</h1>
+
+        <div class="metrics-grid">
+            <div class="metric-card bg-blue">
+                <span class="metric-label">Preço sugerido</span>
+                <span class="metric-value">R$59,99</span>
+                <span class="metric-sub">Baseado no mercado</span>
+            </div>
+            <div class="metric-card bg-green">
+                <span class="metric-label">Média do mercado</span>
+                <span class="metric-value">R$38,59</span>
+                <span class="metric-sub">Preço similar</span>
+            </div>
+            <div class="metric-card bg-bronze">
+                <span class="metric-label">Margem de lucro</span>
+                <span class="metric-value">67,67%</span>
+                <span class="metric-sub">Média margem</span>
+            </div>
+            <div class="metric-card bg-purple">
+                <span class="metric-label">Demanda</span>
+                <span class="metric-value">67/100</span>
+                <span class="metric-sub">Alta demanda</span>
+            </div>
+        </div>
+
+        <div class="chart-section">
+            <h3>Comparar com outras lojas</h3>
+            <div class="chart-container">
+                <div class="chart-bar-group">
+                    <div class="chart-bar bg-blue-2" style="height: 90px;"></div>
+                    <span class="chart-bar-label">Amazon</span>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar bg-teal" style="height: 60px;"></div>
+                    <span class="chart-bar-label">Ebay</span>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar bg-yellow-2" style="height: 75px;"></div>
+                    <span class="chart-bar-label">Ebay</span>
+                </div>
+                <div class="chart-bar-group">
+                    <div class="chart-bar bg-magenta" style="height: 45px;"></div>
+                    <span class="chart-bar-label">BookLy</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="price-input-section">
+            <div class="price-input-box">
+                <label for="preco">Escreva o preço final</label>
+                <div class="price-row">
+                    <span class="currency">R$</span>
+                    <input type="number" id="preco" placeholder="0,00" step="0.01" min="0">
+                </div>
+                <span class="price-warning" id="priceWarning"></span>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button type="button" class="btn-back" id="voltarBtn">Voltar</button>
+            <span class="step-text">Passo 3 de 3</span>
+            <button type="button" class="btn-next" id="registrarBtn">✓ Registrar</button>
+        </div>
+
+        <div class="message" id="message"></div>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script src="js/Item.js"></script>
+    <script src="js/Estimativa.js"></script>
+    <script>Item.initStep3();</script>
+</body>
+</html>

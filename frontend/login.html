@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookLy - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="catalogo.html" class="navbar-logo">
+            <span class="logo-book">Book</span><span class="logo-ly">Ly</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="planos.html">Planos</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="sidebar" id="sidebar">
+        <a href="catalogo.html">Catálogo</a>
+        <a href="planos.html">Planos</a>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="card auth-card">
+        <h1 class="page-title">Entrar</h1>
+
+        <div class="tipo-toggle">
+            <button type="button" class="active" data-tipo="comprador">Comprador</button>
+            <button type="button" data-tipo="livreiro">Vendedor</button>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group full">
+                <label for="login">Login *</label>
+                <input type="text" id="login" placeholder="Seu login" required>
+            </div>
+            <div class="form-group full">
+                <label for="senha">Senha *</label>
+                <input type="password" id="senha" placeholder="Sua senha" required>
+            </div>
+            <div class="actions">
+                <button type="button" class="btn-back" onclick="window.location.href='catalogo.html'">Voltar</button>
+                <button type="submit" class="btn-next">Entrar</button>
+            </div>
+        </form>
+
+        <div class="message" id="message"></div>
+        <div class="auth-link">Não tem conta? <a href="signup.html">Cadastre-se</a></div>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script src="js/Livreiro.js"></script>
+    <script src="js/Comprador.js"></script>
+    <script>
+        var loginTipo = 'comprador';
+
+        document.querySelectorAll('.tipo-toggle button').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tipo-toggle button').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                loginTipo = btn.dataset.tipo;
+            });
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            var msg = document.getElementById('message');
+            var login = document.getElementById('login').value.trim();
+            var senha = document.getElementById('senha').value;
+
+            if (!login || !senha) {
+                msg.className = 'message error';
+                msg.textContent = 'Preencha login e senha.';
+                return;
+            }
+
+            msg.className = 'message loading';
+            msg.textContent = 'Entrando...';
+
+            var result;
+            if (loginTipo === 'livreiro') {
+                result = await Livreiro.login(login, senha);
+            } else {
+                result = await Comprador.login(login, senha);
+            }
+
+            if (result.success) {
+                msg.className = 'message success';
+                msg.textContent = 'Bem-vindo, ' + result.nome + '!';
+                setTimeout(function() { window.location.href = 'catalogo.html'; }, 1000);
+            } else {
+                msg.className = 'message error';
+                if (result.message && result.message.includes('conectar')) {
+                    msg.textContent = 'Não foi possível conectar ao backend. Verifique se o Flask está rodando na porta 5000.';
+                } else {
+                    msg.textContent = result.message || 'Login ou senha incorretos.';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

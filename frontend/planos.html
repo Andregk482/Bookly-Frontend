@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookLy - Planos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="catalogo.html" class="navbar-logo">
+            <span class="logo-book">Book</span><span class="logo-ly">Ly</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="cadastro-step1.html">Cadastrar Livro</a></li>
+            <li><a href="planos.html" class="active">Planos</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="sidebar" id="sidebar">
+        <a href="catalogo.html">Catálogo</a>
+        <a href="cadastro-step1.html">Cadastrar Livro</a>
+        <a href="cadastro-step2.html">Estado do Exemplar</a>
+        <a href="cadastro-step3.html">Preço/Foto</a>
+        <a href="planos.html" class="active">Planos</a>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="planos-container">
+        <h1 class="planos-bg-title">Planos</h1>
+
+        <div class="planos-grid">
+            <div class="plano-card">
+                <div class="plano-badge bg-green"> Mais em conta</div>
+                <h2 class="plano-title">Iniciante</h2>
+                <ul class="plano-features">
+                    <li>Até 5 consultas por dia</li>
+                    <li>Busca por ISBN ou nome</li>
+                    <li>Comparação simples de preços</li>
+                    <li>Relatório básico de mercado</li>
+                    <li>Suporte por e-mail</li>
+                </ul>
+                <div class="plano-price">
+                    <span class="price">R$19,90</span><br>
+                    <span class="period">Por mês</span>
+                </div>
+                <button class="btn-plano" data-plano="Iniciante">Escolher plano ▾</button>
+            </div>
+
+            <div class="plano-card">
+                <div class="plano-badge bg-blue"> Recomendado</div>
+                <h2 class="plano-title">Intermediário</h2>
+                <ul class="plano-features">
+                    <li>Até 20 consultas por dia</li>
+                    <li>Busca por ISBN ou nome</li>
+                    <li>Comparação avançada de preços</li>
+                    <li>Relatório detalhado de mercado</li>
+                    <li>Suporte por e-mail e chat</li>
+                </ul>
+                <div class="plano-price">
+                    <span class="price">R$24,90</span><br>
+                    <span class="period">Por mês</span>
+                </div>
+                <button class="btn-plano" data-plano="Intermediário">Escolher plano ▾</button>
+            </div>
+
+            <div class="plano-card">
+                <div class="plano-badge bg-cyan"> Mais Vendido</div>
+                <h2 class="plano-title">Avançado</h2>
+                <ul class="plano-features">
+                    <li>Consultas ilimitadas</li>
+                    <li>Busca por ISBN ou nome</li>
+                    <li>Comparação completa de preços</li>
+                    <li>Relatório premium de mercado</li>
+                    <li>Suporte prioritário 24/7</li>
+                </ul>
+                <div class="plano-price">
+                    <span class="price">R$49,90</span><br>
+                    <span class="period">Por mês</span>
+                </div>
+                <button class="btn-plano" data-plano="Avançado">Escolher plano ▾</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script>
+        document.querySelectorAll('.btn-plano').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                alert('Plano "' + btn.dataset.plano + '" selecionado!\n\nIntegração de pagamentos ainda não implementada.');
+            });
+        });
+    </script>
+</body>
+</html>

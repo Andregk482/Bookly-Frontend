@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookLy - Catálogo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="catalogo.html" class="navbar-logo">
+            <span class="logo-book">Book</span><span class="logo-ly">Ly</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="catalogo.html" class="active">Catálogo</a></li>
+            <li><a href="cadastro-step1.html">Cadastrar Livro</a></li>
+            <li><a href="planos.html">Planos</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="sidebar" id="sidebar">
+        <a href="catalogo.html" class="active">Catálogo</a>
+        <a href="cadastro-step1.html">Cadastrar Livro</a>
+        <a href="cadastro-step2.html">Estado do Exemplar</a>
+        <a href="cadastro-step3.html">Preço/Foto</a>
+        <a href="planos.html">Planos</a>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="catalog-layout">
+        <button class="filter-toggle-btn" id="filterToggleBtn">☰ Filtros</button>
+
+        <aside class="filter-sidebar" id="filterSidebar">
+            <h3>Filtro</h3>
+
+            <div class="filter-group">
+                <h4>Gênero</h4>
+                <label><input type="checkbox" value="Romance"> Romance</label>
+                <label><input type="checkbox" value="Ficção científica"> Ficção científica</label>
+                <label><input type="checkbox" value="Fantasia"> Fantasia</label>
+                <label><input type="checkbox" value="Biografia"> Biografia</label>
+                <label><input type="checkbox" value="Terror"> Terror</label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Condição</h4>
+                <label><input type="checkbox" value="Perfeito"> Novo</label>
+                <label><input type="checkbox" value="Bom"> Semi-novo</label>
+                <label><input type="checkbox" value="Médio"> Usado</label>
+                <label><input type="checkbox" value="Ruim"> Degradado</label>
+                <label><input type="checkbox" value="Péssimo"> Outlet</label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Idioma</h4>
+                <label><input type="checkbox" value="Português"> Português(br)</label>
+                <label><input type="checkbox" value="Inglês"> Inglês</label>
+                <label><input type="checkbox" value="Espanhol"> Espanhol</label>
+                <label><input type="checkbox" value="Francês"> Francês</label>
+                <label><input type="checkbox" value="Japonês"> Japonês</label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Preço (BRL)</h4>
+                <input type="range" id="priceRange" min="10" max="789" value="789" step="10">
+                <div class="filter-price-labels">
+                    <span>R$10</span>
+                    <span id="priceMaxLabel">R$789</span>
+                </div>
+            </div>
+        </aside>
+
+        <div class="catalog-main">
+            <div class="catalog-search">
+                <select id="searchType">
+                    <option value="all">All</option>
+                    <option value="nome">Título</option>
+                    <option value="autor">Autor</option>
+                    <option value="isbn">ISBN</option>
+                </select>
+                <input type="text" id="searchInput" placeholder="Search">
+            </div>
+
+            <div class="catalog-actions">
+                <span style="color:#9ca3af; font-size:14px;" id="resultCount">Carregando...</span>
+                <div class="login-btns"></div>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <div class="catalog-message" id="loadingMsg">Carregando livros...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script src="js/Livro.js"></script>
+    <script src="js/Item.js"></script>
+    <script>Item.initCatalog();</script>
+</body>
+</html>

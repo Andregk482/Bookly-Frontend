@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookLy - Estado e Detalhes do Exemplar</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="catalogo.html" class="navbar-logo">
+            <span class="logo-book">Book</span><span class="logo-ly">Ly</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="cadastro-step1.html">Cadastrar Livro</a></li>
+            <li><a href="planos.html">Planos</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="sidebar" id="sidebar">
+        <a href="catalogo.html">Catálogo</a>
+        <a href="cadastro-step1.html">Cadastrar Livro</a>
+        <a href="cadastro-step2.html" class="active">Estado do Exemplar</a>
+        <a href="cadastro-step3.html">Preço/Foto</a>
+        <a href="planos.html">Planos</a>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="card">
+        <div class="progress-bar">
+            <div class="step done">
+                <div class="circle">✓</div>
+                <span>Informações básicas</span>
+            </div>
+            <div class="line"></div>
+            <div class="step active">
+                <div class="circle">2</div>
+                <span>Características físicas</span>
+            </div>
+            <div class="line"></div>
+            <div class="step">
+                <div class="circle">3</div>
+                <span>Preço/Foto</span>
+            </div>
+        </div>
+
+        <h1 class="page-title">Estado e Detalhes do Exemplar</h1>
+
+        <div class="state-section">
+            <h3>Estado do livro</h3>
+            <div class="state-buttons">
+                <button type="button" class="state-btn" data-conservacao="Perfeito">
+                    <span class="state-title">Perfeito</span>
+                    <span class="state-desc">Perfeitas condições</span>
+                </button>
+                <button type="button" class="state-btn" data-conservacao="Bom">
+                    <span class="state-title">Bom</span>
+                    <span class="state-desc">Condição muito boa</span>
+                </button>
+                <button type="button" class="state-btn active" data-conservacao="Médio">
+                    <span class="state-title">Médio</span>
+                    <span class="state-desc">Pequeno avaria</span>
+                </button>
+                <button type="button" class="state-btn" data-conservacao="Ruim">
+                    <span class="state-title">Ruim</span>
+                    <span class="state-desc">Avaria notável</span>
+                </button>
+                <button type="button" class="state-btn" data-conservacao="Péssimo">
+                    <span class="state-title">Péssimo</span>
+                    <span class="state-desc">Danos significativos</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="state-section">
+            <h3>Tipo de capa</h3>
+            <div class="binding-buttons">
+                <button type="button" class="binding-btn active" data-capa="Capadura">Capadura</button>
+                <button type="button" class="binding-btn" data-capa="Brochura">Brochura</button>
+            </div>
+        </div>
+
+        <div class="state-section">
+            <h3>Características especiais</h3>
+            <div class="features-buttons">
+                <button type="button" class="feature-btn" data-feature="Primeira edição">Primeira edição</button>
+                <button type="button" class="feature-btn" data-feature="Cópia Assinada">Cópia Assinada</button>
+                <button type="button" class="feature-btn active" data-feature="Impressão Limitada">Impressão Limitada</button>
+                <button type="button" class="feature-btn" data-feature="Fora de catálogo">Fora de catálogo</button>
+                <button type="button" class="feature-btn" data-feature="Vintage">Vintage</button>
+                <button type="button" class="feature-btn" data-feature="Anquidade">Anquidade</button>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="number-input-group">
+                <label for="edicao">Edição</label>
+                <div class="number-input">
+                    <button type="button" id="edicaoMinus">−</button>
+                    <input type="number" id="edicao" value="1" min="1">
+                    <button type="button" id="edicaoPlus">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group full" style="margin-top: 15px;">
+            <label for="descricao">Anotações / Detalhes</label>
+            <textarea id="descricao" placeholder="Quaisquer anotações manuscritas, inscrições ou ex-libris. Páginas rasgadas, manchas."></textarea>
+        </div>
+
+        <div class="actions">
+            <button type="button" class="btn-back" id="voltarBtn">Voltar</button>
+            <span class="step-text">Passo 2 de 3</span>
+            <button type="button" class="btn-next" id="continuarBtn">Continuar</button>
+        </div>
+
+        <div class="message" id="message"></div>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script src="js/Item.js"></script>
+    <script>Item.initStep2();</script>
+</body>
+</html>
